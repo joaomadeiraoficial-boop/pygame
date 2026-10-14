@@ -2,19 +2,26 @@
 
 **Disciplina:** Computação Gráfica  
 **Atividade:** Mini Sistema Solar — Transformações geométricas  
-**Integrantes:** João Alberto Madeira Soares Filho e **[NOME COMPLETO DO SEGUNDO INTEGRANTE]**  
+**Integrante:** João Alberto Madeira Soares Filho  
+**Modalidade:** Individual
 
-## Descrição da solução
+## Descrição
 
-Nesta atividade, usamos transformações geométricas com matrizes para representar um pequeno sistema solar em 2D. O Sol gira em torno do próprio centro, enquanto um planeta realiza uma órbita ao seu redor e também gira sobre seu eixo. A Lua acompanha o movimento do planeta e possui uma órbita própria. As velocidades são atualizadas com `deltaTime`, e as setas permitem aumentar ou diminuir a velocidade orbital sem deixá-la negativa.
+Nesta atividade, implementei um mini sistema solar em 2D combinando matrizes de rotação, translação e escala. O Sol gira em torno do próprio centro, o planeta orbita o Sol a uma distância de `0.6` e também apresenta rotação própria. A Lua orbita o planeta a uma distância de `0.2`, acompanhando seu movimento. As animações utilizam `deltaTime`, e as setas permitem alterar a velocidade da órbita sem deixá-la negativa.
 
 ## Resposta da questão conceitual
 
-A órbita usa `R @ T` porque primeiro deslocamos o planeta para a distância escolhida do Sol e depois giramos essa posição em torno da origem. Como as operações são aplicadas da direita para a esquerda, a translação acontece antes da rotação orbital. A rotação própria do planeta fica à direita da translação para ser aplicada enquanto ele ainda está em sua origem local. Assim, o planeta gira em torno do próprio centro sem mudar a distância de sua órbita.
+A órbita é construída com `R @ T` porque a translação afasta o planeta da origem e a rotação faz esse deslocamento circular ao redor do Sol. Como as operações são aplicadas da direita para a esquerda, a translação acontece primeiro. A rotação própria do planeta fica à direita da translação para acontecer no sistema de coordenadas local do objeto. Dessa maneira, ele gira sobre si mesmo e, ao mesmo tempo, mantém sua distância orbital.
 
-## Como executar
+## Controles
 
-Abra o terminal nesta pasta `alunos` e execute:
+- **↑ / ↓:** aumentam e diminuem a velocidade da órbita.
+- **P:** salva a captura de tela.
+- **Esc:** fecha o programa.
+
+## Execução
+
+Abra um terminal dentro desta pasta `alunos/`:
 
 ```powershell
 py -3.12 -m venv .venv
@@ -22,10 +29,6 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe atividade_sistema_solar.py
 ```
 
-**Controles:** ↑ aumenta a velocidade; ↓ diminui; P salva a captura; Esc fecha.
+## Captura do resultado
 
-## Captura de tela
-
-![Resultado do Mini Sistema Solar](capturas/resultado.png)
-
-> A imagem deve ser capturada durante a execução, pressionando P.
+![Mini Sistema Solar](capturas/resultado.png)

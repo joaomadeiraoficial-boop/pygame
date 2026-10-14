@@ -1,125 +1,58 @@
-# Computação Gráfica com Python e OpenGL
+# Computação Gráfica — Atividades Práticas
 
-Repositório da disciplina de **Computação Gráfica** do **Unipac Barbacena**, ministrada pelo
-**Prof. Rodrigo Fernandes dos Santos**.
+**Aluno:** João Alberto Madeira Soares Filho  
+**Instituição:** UNIPAC Barbacena  
+**Disciplina:** Computação Gráfica  
+**Professor:** Rodrigo Fernandes dos Santos  
+**Modalidade da entrega:** Individual
 
-O projeto constrói, passo a passo, um pequeno framework gráfico com **Pygame**, **PyOpenGL** e
-**NumPy**, seguindo o livro *Developing Graphics Frameworks with Python and OpenGL* (Stemkoski e
-Pascale, CRC Press, 2022). Ele reúne os checkpoints feitos em sala e as aulas completas, cada uma
-com slides, demonstrações e uma atividade em dupla.
+Este repositório reúne as três atividades práticas desenvolvidas na disciplina de Computação Gráfica com Python e OpenGL. A resolução foi feita a partir dos arquivos iniciais disponibilizados pelo professor, com foco nos trechos identificados como `TODO`.
 
-## Aulas
+## Atividades desenvolvidas
 
-Siga as aulas nesta ordem. Cada pasta `alunos/` é independente: tem o próprio framework, os
-exemplos, o enunciado da atividade e as instruções de instalação.
+| Atividade | Conteúdo | Código | Explicação | Captura |
+|---|---|---|---|---|
+| 1. Mini Sistema Solar | Composição de matrizes e transformações geométricas | [Python](Aula_Transformacoes/alunos/atividade_sistema_solar.py) | [README](Aula_Transformacoes/alunos/README.md) | [Imagem](Aula_Transformacoes/alunos/capturas/resultado.png) |
+| 2. Braço Robótico | Grafo de cena, pivôs e hierarquia | [Python](Aula_GrafoCena/alunos/atividade_braco.py) | [README](Aula_GrafoCena/alunos/README.md) | [Imagem](Aula_GrafoCena/alunos/capturas/resultado.png) |
+| 3. Cubo com Satélite Texturizado | Texturas, coordenadas UV e transformações | [Python](Aula_Texturas/alunos/atividade_cubo.py) | [README](Aula_Texturas/alunos/README.md) | [Imagem](Aula_Texturas/alunos/capturas/resultado.png) |
 
-| # | Aula | Capítulo do livro | Atividade |
-|---|---|---|---|
-| 1 | [Transformações geométricas](Aula_Transformacoes/alunos/README.md) | 3: matrizes, composição, global x local, projeção | Mini sistema solar |
-| 2 | [Grafo de cena](Aula_GrafoCena/alunos/README.md) | 4: Object3D, Mesh, Camera, Renderer, pivôs | Braço robótico |
-| 3 | [Texturas](Aula_Texturas/alunos/README.md) | 5: Texture, UV, TextureMaterial | Cubo com satélite texturizado |
+Os README de cada atividade contêm sua descrição, os controles, a resposta à questão conceitual e o registro visual do resultado.
 
-Os slides de cada aula estão na pasta correspondente (`Aula_*/*.pptx`).
+## Resumo das soluções
 
-**Exercícios:** veja [EXERCICIOS.md](EXERCICIOS.md) para a lista das atividades, como entregar e
-os critérios de avaliação.
+**Mini Sistema Solar:** uso de matrizes de rotação, translação e escala para animar o Sol, a órbita e a rotação do planeta e a órbita da Lua. As setas controlam a velocidade orbital, sem permitir valores negativos.
 
-## Estrutura do repositório
+**Braço Robótico:** organização da base, do ombro, do cotovelo, do antebraço e da garra em um grafo de cena. Pivôs permitem movimentar as articulações com o teclado.
 
+**Cubo Texturizado:** aplicação de texturas em dois cubos, configuração de repetição UV no satélite, associação hierárquica, movimento orbital e rotação própria.
+
+## Tecnologias utilizadas
+
+- Python 3.12
+- Pygame
+- PyOpenGL
+- NumPy
+
+O projeto requer uma placa de vídeo com suporte compatível ao OpenGL utilizado nas atividades.
+
+## Como executar no Windows (VS Code)
+
+Cada pasta `alunos/` contém seu próprio código e suas dependências. Abra um terminal dentro da pasta da atividade escolhida e execute:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe atividade_sistema_solar.py
 ```
-├── core/                      framework dos checkpoints iniciais
-├── test-2.1.py ... test-3.py  checkpoints feitos em sala
-├── Exercicio.py               exercício: retângulo animado com uniforms
-├── Aula_Transformacoes/
-│   └── alunos/                demos 1 a 3 + atividade_sistema_solar.py
-├── Aula_GrafoCena/
-│   └── alunos/                demos 1 a 3 + atividade_braco.py
-├── Aula_Texturas/
-│   └── alunos/                exemplos do retângulo e do cubo + atividade_cubo.py
-├── EXERCICIOS.md              enunciados resumidos das atividades
-└── requirements.txt
-```
 
-## Checkpoints da raiz
+Substitua o nome do programa pelo arquivo correspondente: `atividade_braco.py` na segunda atividade ou `atividade_cubo.py` na terceira.
 
-| Arquivo | Conteúdo |
-|---|---|
-| `test-2.1.py` | Janela básica com Pygame e OpenGL |
-| `test-2.3.py` | Hexágono com `Attribute` e `GL_LINE_LOOP` |
-| `test-2-6.py`, `test-2-7.py` | Translação de triângulos com uniforms |
-| `test-2-9.py` | Triângulo com cor animada (uniform `baseColor`) |
-| `test-3.py` | Transformações globais e locais com matrizes (teclado) |
-| `Exercicio.py` | Retângulo de dois triângulos atravessando a tela |
+Para capturar os resultados durante a execução, use **P** no Sistema Solar e no Braço Robótico, e **S** no Cubo Texturizado.
 
-O `test-3.py` usa uniforms do tipo `mat4`. Para executá-lo, use as classes da aula de
-Transformações (`Aula_Transformacoes/alunos/core`), que já trazem esse suporte, ou rode a
-`demo3_global_local.py` daquela aula, que é a versão comentada do mesmo exemplo.
+## Material da disciplina e créditos
 
-## Requisitos
+Este repositório é um **fork do projeto original** de [Rodrigo Fernandes dos Santos](https://github.com/rodrygofesantos/pygame), professor da disciplina. O framework, os arquivos de apoio, as demonstrações, as imagens e os enunciados das atividades são provenientes desse material didático.
 
-- Python 3.11 a 3.13
-- Pygame 2.6.1, PyOpenGL 3.1.10 e NumPy (veja `requirements.txt`)
-- Placa de vídeo com OpenGL 3.2 core ou superior
+As aulas utilizam como referência o livro *Developing Graphics Frameworks with Python and OpenGL*, de Lee Stemkoski e Michael Pascale (CRC Press, 2022).
 
-## Passo a passo: clonando e executando no PyCharm
-
-Este tutorial assume que você já tem o **PyCharm** e o **Git** instalados no seu computador. Se
-ainda não tiver, instale antes de continuar:
-
-- Git: https://git-scm.com/downloads
-- PyCharm (Community, que é gratuita, já é suficiente): https://www.jetbrains.com/pycharm/download/
-
-### 1. Clonar o repositório usando o PyCharm
-
-1. Abra o PyCharm.
-2. Na tela inicial ("Welcome to PyCharm"), clique em **Get from VCS**.
-   - Se o PyCharm já estiver aberto com outro projeto, vá em **File > New > Project from Version
-     Control...**.
-3. Em **URL**, cole:
-   ```
-   https://github.com/rodrygofesantos/pygame.git
-   ```
-4. Escolha a pasta onde o projeto será salvo no seu computador (pode deixar o local sugerido).
-5. Clique em **Clone**.
-6. O PyCharm vai baixar o projeto e abri-lo automaticamente.
-
-### 2. Configurar o interpretador Python (ambiente virtual)
-
-1. Vá em **File > Settings** (no Windows/Linux) ou **PyCharm > Settings** (no Mac).
-2. No menu à esquerda, clique em **Project: pygame > Python Interpreter**.
-3. Clique em **Add Interpreter > Add Local Interpreter...**.
-4. Selecione **Virtualenv Environment > New**, confirme que a versão do Python é 3.10 ou superior e
-   clique em **OK**.
-5. Aguarde o PyCharm terminar de criar o ambiente virtual (uma pasta `.venv` vai aparecer no projeto).
-
-### 3. Instalar as dependências
-
-1. Abra o terminal integrado do PyCharm: menu **View > Tool Windows > Terminal** (ou o atalho
-   `Alt+F12`).
-2. Confirme que aparece `(.venv)` no começo da linha do terminal — isso indica que o ambiente
-   virtual está ativo.
-3. Digite o comando abaixo e pressione Enter:
-   ```
-   pip install -r requirements.txt
-   ```
-
-### 4. Executar o projeto
-
-1. Na árvore de arquivos à esquerda, clique duas vezes em `test-2.1.py` (ou em qualquer outro
-   exemplo) para abri-lo.
-2. Clique com o botão direito em qualquer lugar do código e escolha **Run**.
-   - Alternativamente, clique no ícone de seta verde ▶️ no canto superior direito da janela, ou ao
-     lado do número da linha onde está `Test().run()`.
-3. Uma janela chamada "Graphics Window" deve abrir na tela.
-4. Para fechar o programa, clique no **X** da janela.
-
-### Problemas comuns
-
-- **"ModuleNotFoundError: No module named 'pygame'" (ou `numpy`, `OpenGL`)** — o interpretador
-  selecionado no PyCharm não é o `.venv` do projeto, ou o `pip install -r requirements.txt` não foi
-  executado nesse ambiente. Repita o passo 2 e 3 conferindo se o terminal mostra `(.venv)`.
-- **A janela não abre ou parece travada** — confira se não há nenhuma outra janela do programa já
-  aberta por trás; feche todas e rode de novo. Se estiver usando um notebook/desktop com placa de
-  vídeo dedicada, confirme que os drivers de vídeo estão atualizados.
-- **Nada acontece ao clicar em Run** — confirme que o arquivo `test-2.1.py` está selecionado/aberto
-  como aba ativa antes de clicar em Run.
+Os enunciados originais estão disponíveis em [EXERCICIOS.md](EXERCICIOS.md) e nos arquivos `ATIVIDADE.md` das respectivas pastas. O restante do repositório, incluindo `core/`, demonstrações, checkpoints e `requirements.txt`, foi preservado para permitir a execução dos exercícios.

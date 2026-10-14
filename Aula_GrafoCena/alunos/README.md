@@ -2,19 +2,28 @@
 
 **Disciplina:** Computação Gráfica  
 **Atividade:** Braço Robótico — Grafo de cena  
-**Integrantes:** João Alberto Madeira Soares Filho e **[NOME COMPLETO DO SEGUNDO INTEGRANTE]**  
+**Integrante:** João Alberto Madeira Soares Filho  
+**Modalidade:** Individual
 
-## Descrição da solução
+## Descrição
 
-Construímos um braço robótico tridimensional usando objetos organizados em uma hierarquia. A base é cinza, o braço é laranja, o antebraço é azul e a garra é cinza. Para representar as articulações, usamos pivôs `Object3D` no ombro e no cotovelo. Com isso, cada parte acompanha o movimento da articulação à qual está ligada, e os controles permitem movimentar o robô pelo teclado.
+Desenvolvi um braço robótico tridimensional a partir de uma hierarquia de objetos. A base cinza sustenta o ombro, que controla o braço laranja; na extremidade do braço existe um pivô para o cotovelo, ao qual estão ligados o antebraço azul e a garra cinza. A hierarquia faz com que as partes acompanhem os movimentos das articulações.
 
 ## Resposta da questão conceitual
 
-Os pivôs foram necessários porque as caixas são criadas com seu centro na origem local. Se girássemos diretamente o braço e o antebraço, eles rodariam em torno do centro das caixas, e não no ponto correto das articulações. Os pivôs ficam no ombro e no cotovelo e permitem fazer a rotação nesses pontos. Além disso, a hierarquia garante que as partes filhas acompanhem os movimentos das partes às quais estão conectadas.
+Os pivôs foram necessários porque as caixas são criadas com seu centro na origem local. Ao girar diretamente uma caixa, ela tende a girar ao redor do próprio centro, e não no ponto onde ficaria a articulação. O `Object3D` funciona como referência para posicionar o ombro e o cotovelo e realizar a rotação nesses locais. Além disso, por serem objetos filhos, o antebraço e a garra acompanham os movimentos das partes anteriores.
 
-## Como executar
+## Controles
 
-Abra o terminal nesta pasta `alunos` e execute:
+- **A / D:** giram a base no eixo Y.
+- **W / S:** movimentam o ombro no eixo Z.
+- **I / K:** movimentam o cotovelo no eixo Z.
+- **P:** salva a captura de tela.
+- **Esc:** fecha o programa.
+
+## Execução
+
+Abra um terminal dentro desta pasta `alunos/`:
 
 ```powershell
 py -3.12 -m venv .venv
@@ -22,10 +31,6 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe atividade_braco.py
 ```
 
-**Controles:** A/D giram a base; W/S movimentam o ombro; I/K movimentam o cotovelo; P salva a captura; Esc fecha.
+## Captura do resultado
 
-## Captura de tela
-
-![Resultado do Braço Robótico](capturas/resultado.png)
-
-> Registre o braço dobrado durante a execução, pressionando P.
+![Braço Robótico](capturas/resultado.png)
